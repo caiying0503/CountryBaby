@@ -1,0 +1,87 @@
+.App {
+  text-align: center;
+  padding-top: 100px;
+  background-image: url('https://i.pinimg.com/564x/2f/4c/9d/2f4c9d35f73cb28926a68b5b47b73267.jpg');
+  background-size: cover; /* 使背景图片覆盖整个背景 */
+  background-repeat: no-repeat; /* 不重复背景图片 */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.fa-house {
+  font-size: 20px;
+}
+
+.house-icon {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin-right: 5px;
+  margin-top: 0px;
+  color: #000;
+}
+
+.house-icon:hover{
+  color: #e8b681;
+}
+
+.header-text {
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 每排4個 */
+  gap: 20px; /* 調整卡片之間的間距 */
+  justify-content: center;
+  margin: 0 auto;
+  width: 80%; /* 設置寬度以便居中顯示 */
+}
+
+.product-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  border-radius: 8px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.farmer-info {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.farmer-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.farmer-name {
+  padding-left: 20px; /* 調整這個值來將名字移動到右邊 */
+  font-size: 1.0em;
+}
+
+.product-card h2 {
+  font-size: 1.2em;
+  margin: 0.5em 0;
+}
+
+.product-card p {
+  margin: 0.5em 0;
+}

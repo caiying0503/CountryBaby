@@ -1,0 +1,21 @@
+/* 底部資訊CSS */
+#bottom{
+    width: 100%;
+    background-color: #746248;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    position: static;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+
+   }
+h4{
+    color: #ffffff;
+
+   }
+
+p{
+    color: #d5d5d5;
+    font-size: small;
+
+}

@@ -1,0 +1,15 @@
+#container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    justify-content: center;
+    justify-items: center;
+    padding: 90px;
+  }
+  
+  #goal {
+    padding: 10px;
+  }
+
+
+

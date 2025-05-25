@@ -1,0 +1,133 @@
+.baby{
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  background-image: url('https://i.pinimg.com/564x/2f/4c/9d/2f4c9d35f73cb28926a68b5b47b73267.jpg'); /* 添加背景图片 */
+  background-size: cover; /* 使背景图片覆盖整个背景 */
+  background-repeat: no-repeat; /* 不重复背景图片 */
+  background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
+  margin: 0;
+  padding: 100px 0 0 0;
+}
+
+.baby-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.fa-house {
+  font-size: 20px;
+}
+
+.baby-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  /* margin-left: 20px; */
+  /* margin: 50px auto 0 auto; */
+}
+
+.baby-list-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.baby-list-title {
+  font-size: 1.5em;
+  color: white;
+  background-color: #b2c89e; /* 与图片中的绿色匹配 */
+  padding: 80px 30px;
+  border-left: none; /* 移除左边框 */
+  margin-right: 40px; /* 标题与产品框之间的间距 */
+  display: inline-block;
+  width: 90px;
+}
+
+.baby-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.baby-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: calc(25% - 20px);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.baby-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.baby-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+
+.baby-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.baby-card:hover .product-image-container img {
+  transform: scale(1.05);
+}
+
+.baby-info {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.baby-discount {
+  font-size: 0.9em;
+  color: red;
+  margin-bottom: 5px;
+}
+
+.baby-name {
+  font-size: 1.2em;
+  margin: 5px 0;
+  color: #333;
+  flex-grow: 1;
+}
+
+.baby-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 居中对齐 */
+  margin-bottom: 20px;
+}
+
+.buy-button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+}
+
+.buy-button:hover {
+  background-color: #1558b8;
+}

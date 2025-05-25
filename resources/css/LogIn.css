@@ -1,0 +1,90 @@
+/* LogIn.css */
+
+* {
+  font-family: 微軟正黑體;  
+}
+
+body {
+  background-color: rgb(224, 205, 205);
+}
+
+#username,
+#password,
+.login h3 {
+  width: 200px;
+  height: 35px; /* 修改为 35px */
+  margin: 10px;
+  color: #b2c89e;
+}
+
+.login h5 {
+  margin: 20px;
+  color: #a3a2a3;
+}
+
+.login h5:hover {
+  color: black;
+}
+
+.signup-link {
+  text-decoration: none; /* 去掉下划线 */
+  color: rgb(194, 194, 194); /* 设置为灰色 */
+}
+
+.signup-link:hover {
+  color: rgb(243, 194, 134); /* 设置为浅橙色 */
+}
+
+#container1 {
+  margin: 50px;
+  padding: 10px;
+  width: 299px;
+  height: 310px; /* 修改为 310px */
+  background-color: white;
+  border-radius: 5px;
+  border-top: 10px solid #b2c89e;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  
+  /*定位对齐*/
+  position: relative;
+  margin: auto;
+  top: 200px;
+  text-align: center;
+}
+
+.system_name {
+  /*定位对齐*/
+  position: relative;
+  margin: auto;
+  top: 180px;
+  text-align: center;
+}
+
+.submit {
+  color: white;
+  background: #b2c89e;
+  width: 200px;
+  height: 30px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.submit:hover {
+  background: #e8b681;
+}
+
+#copyright {
+  text-align: center;
+  color: #a3a2a3;
+  margin: -200px 0px 0px 0px;
+  font-size: 14px;
+}
+
+.login input {
+  padding: 3px;
+  border: none;
+  border: solid 1px #ccc;
+  border-radius: 15px;
+}

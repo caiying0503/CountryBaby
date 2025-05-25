@@ -1,0 +1,284 @@
+/* 全域CSS */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* 導航欄CSS */
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #efefef;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 30;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.737) 0px 8px 16px -8px;
+
+}
+
+.menu-left,
+.menu-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-left li,
+.menu-right li {
+  display: flex;
+  align-items: center;
+}
+
+.menu-left li a
+/* .menu-right li a  */
+{
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 14px 16px;
+  display: block;
+  text-decoration: none;
+  margin-top: 0;
+}
+
+.menu-left li a:hover
+/* .menu-right li a:hover  */
+{
+  background-color: #b2c89e;
+  text-decoration: none;
+
+}
+
+.active {
+  background-color: #83a184;
+}
+
+/* User及購物車按鍵CSS */
+.fa-bar,
+.user,
+.cart {
+  padding: 20px 25px;
+}
+
+.fa-bar i{
+  color: #98ab86;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.cart{
+  background-color: transparent;
+}
+
+.cart-icon{
+  color: #98ab86;
+  font-size: 25px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.cart-icon:hover{
+  color: #e8b681;
+  background-color: transparent;
+}
+
+
+
+
+
+/* user CSS */
+.user-menu {
+  position: relative;
+  color: #98ab86; /* 滑鼠移過變色 */
+}
+
+.user-menu:hover {
+  color: #e8b681; /* 滑鼠移過變色 */
+}
+
+.user-menu ul {
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+  position: absolute;
+  top: 15px;
+  left: -50px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  white-space: nowrap; /* 防止項目折行 */
+  margin-top: 10px;
+}
+
+.user-menu:hover ul {
+  display: block; /* 顯示下拉選單 */
+}
+
+.user-menu li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user-menu li a {
+  display: block;
+  color: #555;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.user-menu li a:hover {
+  background-color: #e8b681;
+  color: white;
+}
+
+.user-menu li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.fa-user{
+  font-size: 25px;
+}
+
+
+/* 搜尋欄CSS */
+.search-container {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+}
+
+.search {
+  position: relative;
+  width: 100%;
+}
+
+.search-bar {
+  width: 100%;
+  height: 32px;
+  font-size: 20px;
+  border: 3px solid #b2c89e;
+  background-color: #efefef;
+}
+
+.search-btn {
+  width: 36px;
+  height: 32px;
+  background-color: #b2c89e;
+  color: #efefef;
+  outline: none;
+  border: 2px solid #b2c89e;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.search-btn i {
+  font-size: 16px;
+}
+
+/* logo CSS */
+.logo {
+  height: 65px;
+  margin-right: 15px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-left,
+  .menu-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .menu-left li,
+  .menu-right li {
+    width: auto;
+    padding: 10px 0;
+  }
+
+  .search-container {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .search-bar {
+    width: calc(100% - 36px);
+  }
+}
+
+/* 側邊欄樣式 */
+.sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  background-color: #b2c89e;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  z-index: 1001;
+  opacity: 0.9;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar a {
+  padding: 8px 10px 8px 30px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #2f2f2f;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}

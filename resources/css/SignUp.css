@@ -1,0 +1,47 @@
+/* SignUp.css */
+
+#fullname,
+#comfirm_password,
+#username2,
+#password2,
+.signup h3{
+  width: 200px;
+  height: 35px;
+  margin: 10px;
+  color: #b2c89e;
+}
+
+.login-link {
+  text-decoration: none; /* 去掉下划线 */
+  color: rgb(194, 194, 194); /* 设置为灰色 */
+}
+
+.login-link:hover {
+  color: #e8b681; /* 设置为浅橙色 */
+}
+
+#container2 {
+  margin: 50px;
+  padding: 10px;
+  width: 330px;
+  height: 400px;
+  background-color: white;
+  border-radius: 5px;
+  border-top: 10px solid #b2c89e;
+  
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  
+  /*定位对齐*/
+  position: relative;
+  margin: auto;
+  top: 200px;
+  text-align: center;
+}
+
+.signup input {
+    padding: 3px;
+    border: none;
+    border: solid 1px #ccc;
+    border-radius: 15px;
+  }
+  

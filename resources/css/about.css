@@ -1,0 +1,93 @@
+.about {
+    font-family: Comic Sans MS,Microsoft JhengHei;
+    line-height: 1.6;
+    margin: 0; /* 去除页面的默认边距 */
+    padding: 20px; /* 设置页面内边距 */
+    background-color: #fffff1;
+    /* font-family:Microsoft JhengHei,Comic Sans MS; */
+}
+
+.circle--square {
+    border-radius: 50%; /* 将图片变成圆形 */
+    width: 250px;
+    display: block; /* 让图片居中显示 */
+    margin: 0 auto 20px; /* 自动设置左右边距 */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+
+.about-h1 {
+    text-align: center; /* 将标题居中显示 */
+    font-weight: bolder;
+    color: #4e5843;
+}
+
+.about-p {
+    margin: 0 auto;
+    max-width: 600px;
+    text-align: center;
+    color:#869777;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.hr {
+    width: 100%; /* 水平线宽度占满整个页面 */
+    max-width: 1200px; /* 设置水平线的最大宽度 */
+    margin: 20px auto; /* 自动设置左右边距 */
+    border: none; /* 去掉默认边框 */
+    border-top: 1px solid #b2c89e; /* 设置顶部边框样式 */
+}
+
+.g, .g2 {
+    display: flex; /* 使用 flexbox 进行水平排列 */
+    align-items: center; /* 垂直居中对齐项目 */
+    margin-top: 20px; /* 根据需要调整上边距 */
+}
+
+.g img{
+    width: 50%; /* 根据需要调整图像宽度 */
+    height: auto; /* 图像高度自适应 */
+    margin-right: 40px; /* 图像和文本之间的间距 */
+    border-radius: 10px; /* 图像圆角 */
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.g2 img {
+    width: 50%; /* 根据需要调整图像宽度 */
+    height: auto; /* 图像高度自适应 */
+    margin-left: 40px; /* 图像和文本之间的间距 */
+    border-radius: 10px; /* 图像圆角 */
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.g p, .g2 p {
+    margin: 0; /* 移除段落的默认边距 */
+    font-size: 20px;
+    color: #6b795f;
+    font-weight: bold;
+}
+
+.line {
+    height: 400px;
+    background-color: rgb(0, 0, 0);
+    margin-right: 20px;
+    border: solid 6px #b2c89e;
+
+    /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
+}
+
+.line2 {
+    height: 400px;
+    background-color: rgb(0, 0, 0);
+    margin-left: 20px;
+    border: solid 6px #b2c89e;
+
+    /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
+}
+
+/* 反向排列 .goal2 的样式 */
+.g2 {
+    flex-direction: row-reverse; /* 反向排列 */
+}
