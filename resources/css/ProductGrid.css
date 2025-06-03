@@ -144,9 +144,24 @@
 }
 
 .product-info p {
-  margin: 10px 0 5px;
-  font-size: 16px;
-  color: #555;
+  font-size: 1.2em;
+  margin: 5px 0;
+  color: #333;
+}
+
+
+.product-info h4 {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #ff7043;
+  margin-bottom: 15px;
+}
+
+
+.product-info h6 {
+  font-size: 0.8em;
+  color: rgb(37, 136, 80);
+  margin-bottom: 5px;
 }
 
 .product-info span {

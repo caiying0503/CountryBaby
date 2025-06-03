@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/ProductGrid.css';
 
-// 商品分類側邊欄
 const CategorySidebar = () => {
   const categories = [
+    { name: '🔥熱銷排行榜🔥', url: '/ProductGrid' },
     { name: '商品總覽', url: '/AllProducts' },
     { name: '蔬菜', url: '/ProductVegetables' },
     { name: '水果', url: '/ProductFruits' },
@@ -24,110 +24,126 @@ const CategorySidebar = () => {
   );
 };
 
-// 商品列表元件
-const ProductList = ({ data }) => {
-  // 處理產品卡片
-  const renderProduct = (products) =>
-    products.map((product, index) => (
-      <div className="product" key={index}>
+const ProductModal = ({ product, onClose }) => {
+  const [quantity, setQuantity] = useState(1);
+
+  if (!product) return null;
+
+  const increaseQuantity = () => setQuantity((prev) => prev + 1);
+  const decreaseQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
+
+  return (
+    <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+      <div className="modal-dialog modal-dialog-centered">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">{product.name}</h5>
+          </div>
+          <div className="modal-body">
+            <img src={product.image} alt={product.name} style={{ width: '100%' }} />
+            <p>賣家：{product.seller}</p>
+            <p>價格：NT$ {product.price}</p>
+            <p>介紹：{product.introduce}</p>
+
+            <div className="quantity-container" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <button type="button" className="btn btn-outline-secondary" onClick={decreaseQuantity}>
+                -
+              </button>
+              <span style={{ fontSize: '18px', fontWeight: 'bold' }}>{quantity}</span>
+              <button type="button" className="btn btn-outline-secondary" onClick={increaseQuantity}>
+                +
+              </button>
+            </div>
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-secondary" onClick={onClose}>
+              關閉
+            </button>
+            <button type="button" className="btn btn-success">
+              加入購物車（{quantity} 件）
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ProductList = ({ data, rankings, onOrderClick }) => {
+  const renderProduct = (category, products) => {
+    const rankedProducts = rankings[category]
+      .map((id) => products.find((product) => product.id === id))
+      .filter(Boolean);
+
+    return rankedProducts.map((product, index) => (
+      <div className="product" key={product.id}>
         <div className={`product-rank rank-${index + 1}`}>NO.{index + 1}</div>
         <img
           src={product.image}
           alt={product.name}
-          onError={(e) => (e.target.src = '/images/default-placeholder.png')} // 預設圖片
+          onError={(e) => (e.target.src = '/images/default-placeholder.png')}
         />
         <div className="product-info">
+          <h6>{product.seller}</h6>
           <p className="product-name">{product.name}</p>
+          <h4 className="product-price">NT$ {product.price}</h4>
+
           <span className="product-source">{product.source}</span>
-          <button className="order-button">火速下單</button>
+          <button className="order-button" onClick={() => onOrderClick(product)}>
+            火速下單
+          </button>
         </div>
       </div>
     ));
+  };
 
   return (
     <div className="content">
-      {Object.entries(data).map(([key, products]) => (
-        <div key={key} className="section">
-          <h2>{key}</h2>
-          <div className="products">{renderProduct(products)}</div>
+      {Object.keys(rankings).map((category) => (
+        <div key={category} className="section">
+          <h2>{category}</h2>
+          <div className="products">{renderProduct(category, data)}</div>
         </div>
       ))}
     </div>
   );
 };
 
-// 主商品頁
 const ProductGrid = () => {
-  const data = {
-    "🔥商品熱銷總排行🔥": [
-      {
-        image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST9dU5j46de3N3_6TVP1OMQOIZCtnxaON1Dg&s',
-        name: '愛文芒果 (6公斤/盒 約10顆) 1箱/免運',
-        source: '怡君開心農場',
-        price: 'NT$890',
-      },
-      {
-        image:
-          'https://img.ltn.com.tw/Upload/food/page/2016/04/10/160410-1242-00-SXDOn.jpg',
-        name: '高山高麗菜 (約8公斤/10顆)',
-        source: '芳宜農作',
-        price: 'NT$600',
-      },
-      {
-        image:
-          'https://img.ltn.com.tw/Upload/food/page/2018/04/23/180423-7478-0-6UNcA.jpg',
-        name: '台農17號金鑽鳳梨5公斤3顆x1箱(產銷履歷_大顆)',
-        source: '大熊農場',
-        price: 'NT$790',
-      },
-    ],
-    "蔬菜銷售總排行": [
-      {
-        image: 'https://img.ltn.com.tw/Upload/food/page/2016/04/10/160410-1242-00-SXDOn.jpg',
-        name: '高山高麗菜',
-        source: '芳宜農作',
-        price: 'NT$600',
-      },
-      {
-        image: 'https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/9816216/0/638521502659370000?v=1',
-        name: '美玉白蘿蔔 2500g',
-        source: '鮮友農場',
-        price: 'NT$250',
-      },
-      {
-        image: 'https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/8873261/0/638518896529400000?v=1',
-        name: '有機蚵仔白菜500g',
-        source: '山上農樂',
-        price: 'NT$150',
-      },
-    ],
-    水果銷售總排行: [
-      {
-        image: 'https://shoplineimg.com/5d08366e3f64c1000128316b/61692db02b79a70035c26b08/800x.webp?source_format=jpg',
-        name: '社頭冠軍芭樂禮盒[冷藏](珍珠芭樂8斤裝)',
-        source: '社頭冠軍芭樂',
-        price: 'NT$700',
-      },
-      {
-        image: 'https://shoplineimg.com/5d08366e3f64c1000128316b/620240fe2ca2e30029cd4213/800x.webp?source_format=jpg',
-        name: '晶彩巨峰葡萄',
-        source: '晶彩農作',
-        price: 'NT$600',
-      },
-      {
-        image: 'https://ms-harvest.com/wp-content/uploads/2024/05/DSC08229.webp',
-        name: '迷你西瓜 miniball',
-        source: '嘉農蔬果',
-        price: 'NT$1499',
-      },
-    ],
+  const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // 排行榜 ID 配置
+  const rankings = {
+    '🔥商品熱銷總排行🔥': [5, 13, 6],
+    '蔬菜銷售總排行': [13, 8, 10],
+    '水果銷售總排行': [5, 6, 3],
   };
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/products')
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  const openModal = (product) => setSelectedProduct(product);
+  const closeModal = () => setSelectedProduct(null);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="main-container">
       <CategorySidebar />
-      <ProductList data={data} />
+      <ProductList data={products} rankings={rankings} onOrderClick={openModal} />
+      <ProductModal product={selectedProduct} onClose={closeModal} />
     </div>
   );
 };
