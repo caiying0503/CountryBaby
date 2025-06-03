@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import '../css/Header.css';
 import { Link } from "react-router-dom";
@@ -22,7 +21,15 @@ function Header() {
               <img src="/images/final-logo.png" className="logo" alt="Logo" />
             </Link>
           </div>
-          <li><Link to="/ProductGrid">全部商品</Link></li>
+          <li className="dropdown">
+            <Link to="/ProductGrid" className="dropdown-toggle">
+              全部商品<i></i>
+            </Link>
+            <ul className="dropdown-menu">
+              <li><Link to="/ProductVegetables">蔬菜</Link></li>
+              <li><Link to="/ProductFruits">水果</Link></li>
+            </ul>
+          </li>
           <li><Link to="/Famor">小農自賣</Link></li>
           <li><Link to="/Baby">寶貝小物</Link></li>
           <li><Link to="/VideoPage">植栽教學</Link></li>
@@ -31,13 +38,15 @@ function Header() {
         <div className="menu-right">
           <li className="search-container">
             <div className="search">
-              <input className="search-bar" type="text" name="search" id="search" placeholder="輸入關鍵字搜尋" />
+              <input className="search-bar" type="text" placeholder="輸入關鍵字搜尋" />
               <button className="search-btn" type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
             </div>
           </li>
-          <li className="user-menu">
-            <i className="fa-solid fa-user"></i>
-            <ul>
+          <li className="dropdown user-menu">
+            <div>
+              <i className="fa-solid fa-user"></i>
+            </div>
+            <ul className="dropdown-menu">
               <li><Link to="/LogIn">會員登入</Link></li>
               <li><Link to="/SignUp">註冊會員</Link></li>
             </ul>
@@ -57,4 +66,3 @@ function Header() {
 }
 
 export default Header;
-

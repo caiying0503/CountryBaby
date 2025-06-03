@@ -25,7 +25,6 @@ a {
   height: 70px;
   z-index: 30;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.737) 0px 8px 16px -8px;
-
 }
 
 .menu-left,
@@ -38,11 +37,10 @@ a {
 .menu-right li {
   display: flex;
   align-items: center;
+  position: relative; /* 為下拉選單定位做準備 */
 }
 
-.menu-left li a
-/* .menu-right li a  */
-{
+.menu-left li a {
   color: rgb(0, 0, 0);
   text-align: center;
   padding: 14px 16px;
@@ -51,17 +49,66 @@ a {
   margin-top: 0;
 }
 
-.menu-left li a:hover
-/* .menu-right li a:hover  */
-{
+.menu-left li a:hover {
   background-color: #b2c89e;
   text-decoration: none;
-
 }
 
 .active {
   background-color: #83a184;
 }
+
+/* 新增的下拉選單樣式 */
+.menu-left .dropdown {
+  position: relative; /* 下拉選單的父容器需要有相對定位 */
+}
+
+.menu-left .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-left .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0px 0; /* 縮小上下內邊距 */
+  margin: 0px;
+  border-radius: 5px;
+  z-index: 1000;
+  width: auto; /* 自適應內容寬度 */
+  min-width: 100px; /* 設置最小寬度，避免太窄 */
+  max-width: 200px; /* 限制最大寬度 */
+  text-align:center; /* 根據需求調整文字對齊 */
+}
+.menu-left .dropdown-menu li {
+  padding: 5px 10px;
+  justify-content: center; /* 水平居中對齊 */
+  align-items: center; /* 垂直居中對齊 */
+}
+
+.menu-left .dropdown-menu li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.menu-left .dropdown-menu li a:hover {
+  background-color: #58624e;
+  color: white;
+  border-radius: 5px;
+}
+
+.menu-left .dropdown:hover .dropdown-menu {
+  display: block; /* 滑鼠移入時顯示子選單 */
+}
+
 
 /* User及購物車按鍵CSS */
 .fa-bar,
@@ -94,64 +141,67 @@ a {
 }
 
 
-
-
-
-/* user CSS */
+/* 使用者下拉選單*/
 .user-menu {
   position: relative;
-  color: #98ab86; /* 滑鼠移過變色 */
+  color: #98ab86;
+  cursor: pointer;
 }
 
-.user-menu:hover {
-  color: #e8b681; /* 滑鼠移過變色 */
-}
-
-.user-menu ul {
-  display: none;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background-color: #f1f1f1;
-  position: absolute;
-  top: 15px;
-  left: -50px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  white-space: nowrap; /* 防止項目折行 */
-  margin-top: 10px;
-}
-
-.user-menu:hover ul {
-  display: block; /* 顯示下拉選單 */
-}
-
-.user-menu li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.user-menu li a {
-  display: block;
-  color: #555;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-.user-menu li a:hover {
-  background-color: #e8b681;
-  color: white;
-}
-
-.user-menu li a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.fa-user{
+.menu-right .fa-user {
   font-size: 25px;
 }
 
+
+.user-menu:hover {
+  color: #e8b681;
+}
+
+.user-menu .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff; /* 白色背景更清晰 */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* 柔和的陰影效果 */
+  list-style: none;
+  padding: 5px; /* 緊湊的上下內邊距 */
+  margin: 0;
+  border-radius: 8px; /* 更圓潤的邊角 */
+  z-index: 1000;
+  text-align: center;
+  min-width: 120px; /* 增加最小寬度 */
+  width: auto; /* 寬度自適應內容 */
+  font-family: Arial, sans-serif; /* 更現代的字體 */
+  font-size: 14px; /* 適中的字體大小 */
+}
+
+.user-menu .dropdown-menu li {
+  padding: 6px 12px; /* 調整項目間距，增加可點擊範圍 */
+  justify-content: center;
+  align-items: center;
+}
+
+.user-menu .dropdown-menu li a {
+  color: #333333; /* 深灰色字體，易讀性更高 */
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+  padding: 10px; /* 增加點擊範圍 */
+  border-radius: 4px; /* 輕微圓角的按鈕 */
+  transition: all 0.2s ease-in-out; /* 增加滑鼠懸停效果的平滑過渡 */
+}
+
+.user-menu .dropdown-menu li a:hover {
+  background-color: #e8b681; /* 懸停時背景變成溫暖的橙色 */
+  color: #ffffff; /* 懸停時字體變白 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 懸停時增加輕微陰影 */
+}
+
+.user-menu:hover .dropdown-menu {
+  display: block; /* 滑鼠懸停時顯示下拉選單 */
+  animation: fadeIn 0.2s ease-in-out; /* 添加淡入動畫 */
+}
 
 /* 搜尋欄CSS */
 .search-container {
@@ -168,7 +218,7 @@ a {
 .search-bar {
   width: 100%;
   height: 32px;
-  font-size: 20px;
+  font-size: 15px;
   border: 3px solid #b2c89e;
   background-color: #efefef;
 }
@@ -282,3 +332,4 @@ a {
 .openbtn:hover {
   background-color: #444;
 }
+

@@ -1,51 +1,21 @@
 /* 目標圖CSS */
 #container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    justify-content: center;
-    justify-items: center;
-    padding: 90px;
-  }
-  
-  #goal {
-    padding: 10px;
-  }
-
-  
-/* 底部資訊CSS */
-
-#bottom {
-  width: 100%;
-  background-color: #746248;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  position: static;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-  padding: 20px 0; /* 添加上下填充 */
-  font-family: 'Arial', sans-serif; /* 更改字體 */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 自適應排列 */
+  gap: 20px;
+  justify-content: center;
+  padding: 60px; /* 縮減過多填充 */
 }
 
-h4 {
-  color: #ffffff;
-  margin-bottom: 10px; /* 添加底部間距 */
+#goal {
+  padding: 10px;
+  background-color: #f9f9f9; /* 添加背景顏色 */
+  border-radius: 8px; /* 圓角 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* 添加動態效果 */
 }
 
-p {
-  color: #d5d5d5;
-  font-size: 14px; /* 稍微調大字體 */
-  margin: 5px 0; /* 添加上下間距 */
-  line-height: 1.5; /* 行距 */
+#goal:hover {
+  transform: translateY(-5px); /* 懸停時向上移動 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 陰影加深 */
 }
-
-p a {
-  color: #d5d5d5; /* 保持相同顏色 */
-  text-decoration: none; /* 移除連結下劃線 */
-}
-
-p a:hover {
-  text-decoration: underline; /* 滑鼠懸停時顯示下劃線 */
-}
-
-

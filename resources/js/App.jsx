@@ -9,6 +9,9 @@ import Famor from './famor.jsx';
 import Baby from './baby.jsx';
 import VideoPage from './video.jsx';
 import About from './about.jsx';
+import AllProducts from './AllProducts.jsx';
+import ProductFruits from './ProductFruits.jsx';
+import ProductVegetables from './ProductVegetables.jsx';
 import { Carousel, Bottom, Goals } from './FirstPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
@@ -25,6 +28,10 @@ function App() {
       <Route path='/Baby' element={<div><Header/><Baby/></div>}></Route>
       <Route path='/VideoPage' element={<div><Header/><VideoPage/></div>}></Route>
       <Route path='/About' element={<div><Header/><About/></div>}></Route>
+      <Route path='/AllProducts' element={<div><Header/><AllProducts /></div>}></Route>
+      <Route path='/ProductVegetables' element={<div><Header/><ProductVegetables/></div>}></Route>
+      <Route path='/ProductFruits' element={<div><Header/><ProductFruits/></div>}></Route>
+
     </Routes>
   );
 }

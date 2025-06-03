@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/famor.css';
 import { Link } from 'react-router-dom';
 
-const products = [
+const famors = [
     {
         title: '大力水手菠菜！有機栽種!',
         farmer: '劉德正農舍',
@@ -70,15 +70,15 @@ function Famor() {
                     <span className="header-text">▶ 小農自賣</span>
                 </div>
             </header>
-            <div className="product-list">
-                {products.map((product, index) => (
-                    <div className="product-card" key={index}>
-                        <img src={product.imageUrl} alt={product.title} className="product-image" />
-                        <h2>{product.title}</h2>
-                        <p>{product.description}</p>
+            <div className="famor-list">
+                {famors.map((famor, index) => (
+                    <div className="famor-card" key={index}>
+                        <img src={famor.imageUrl} alt={famor.title} className="famor-image" />
+                        <h2>{famor.title}</h2>
+                        <p>{famor.description}</p>
                         <div className="farmer-info">
-                            <img src={product.farmerImageUrl} alt={product.farmer} className="farmer-image" />
-                            <p className="farmer-name">{product.farmer}</p>
+                            <img src={famor.farmerImageUrl} alt={famor.farmer} className="farmer-image" />
+                            <p className="farmer-name">{famor.farmer}</p>
                         </div>
                     </div>
                 ))}

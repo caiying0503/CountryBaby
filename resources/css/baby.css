@@ -1,14 +1,20 @@
-.baby{
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  background-image: url('https://i.pinimg.com/564x/2f/4c/9d/2f4c9d35f73cb28926a68b5b47b73267.jpg'); /* 添加背景图片 */
-  background-size: cover; /* 使背景图片覆盖整个背景 */
-  background-repeat: no-repeat; /* 不重复背景图片 */
-  background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
+/* 全局樣式 */
+body {
   margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  background-image: url('https://i.pinimg.com/564x/2f/4c/9d/2f4c9d35f73cb28926a68b5b47b73267.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* 頁面容器 */
+.baby {
   padding: 100px 0 0 0;
 }
 
+/* 頁面標題 */
 .baby-header {
   display: flex;
   align-items: center;
@@ -16,35 +22,50 @@
   margin-left: 30px;
 }
 
-.fa-house {
-  font-size: 20px;
+.house-icon {
+  font-size: 22px;
+  color: #1a73e8;
+  margin-right: 10px;
+  transition: transform 0.3s;
 }
 
+.house-icon:hover {
+  transform: scale(1.2);
+}
+
+.header-text {
+  font-size: 1.4em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* 容器 */
 .baby-container {
   padding: 20px;
   max-width: 1200px;
   margin: auto;
-  /* margin-left: 20px; */
-  /* margin: 50px auto 0 auto; */
 }
 
+/* 產品列表 */
 .baby-list-container {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .baby-list-title {
-  font-size: 1.5em;
-  color: white;
-  background-color: #b2c89e; /* 与图片中的绿色匹配 */
-  padding: 80px 30px;
-  border-left: none; /* 移除左边框 */
-  margin-right: 40px; /* 标题与产品框之间的间距 */
-  display: inline-block;
-  width: 90px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #2e4c2d;
+  margin-bottom: 25px;
+  padding: 10px;
+  /* border-bottom: 5px solid #3e6c3c; */
+  background: #c3d7c3;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1); /* 添加陰影 */
 }
 
+
+/* 產品卡片 */
 .baby-cards {
   display: flex;
   flex-wrap: wrap;
@@ -53,81 +74,76 @@
 
 .baby-card {
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: calc(25% - 20px);
   transition: transform 0.3s, box-shadow 0.3s;
-  display: flex;
-  flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .baby-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* 圖片區域 */
 .baby-image-container {
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
-  border-bottom: 1px solid #ddd;
 }
 
 .baby-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
 }
 
-.baby-card:hover .product-image-container img {
-  transform: scale(1.05);
+.baby-card:hover .baby-image-container img {
+  transform: scale(1.1);
 }
 
+/* 產品信息 */
 .baby-info {
   padding: 15px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  text-align: center;
 }
 
 .baby-discount {
-  font-size: 0.9em;
-  color: red;
-  margin-bottom: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #ff4d4f;
+  margin-bottom: 10px;
 }
 
 .baby-name {
-  font-size: 1.2em;
-  margin: 5px 0;
+  font-size: 1.3em;
+  margin: 10px 0;
   color: #333;
-  flex-grow: 1;
+  font-weight: 500;
 }
 
 .baby-price {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: bold;
-  color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* 居中对齐 */
-  margin-bottom: 20px;
+  color: #8ad376;
+  margin-bottom: 15px;
 }
 
+/* 購買按鈕 */
 .buy-button {
-  background-color: #1a73e8;
+  background: linear-gradient(90deg, #156008, #b8d6bd);
   color: white;
   border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s;
-  
+  transition: background 0.3s, transform 0.3s;
 }
 
 .buy-button:hover {
-  background-color: #1558b8;
+  /* background: linear-gradient(90deg, #156008, #b8d6bd); */
+  transform: translateY(-3px);
 }

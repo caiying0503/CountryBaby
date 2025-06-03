@@ -1,162 +1,135 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import '../css/ProductGrid.css';
-// import './ProductGrid.module.css';
 
+// 商品分類側邊欄
+const CategorySidebar = () => {
+  const categories = [
+    { name: '商品總覽', url: '/AllProducts' },
+    { name: '蔬菜', url: '/ProductVegetables' },
+    { name: '水果', url: '/ProductFruits' },
+  ];
 
-const ProductGrid = () => {
-
-  const allProductsRef = useRef(null);
-  const vegetableProductsRef = useRef(null);
-  const fruitProductsRef = useRef(null);
-  const toolsProductsRef = useRef(null);
   return (
-    <div className="main-container">
-      <div className="product-sidebar">
-        <h2>商品分類</h2>
-        <ul>
-        <li><a href="#" onClick={() => allProductsRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })}>全部商品</a></li>
-          <li><a href="#" onClick={() => vegetableProductsRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })}>蔬菜排行</a></li>
-          <li><a href="#" onClick={() => fruitProductsRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })}>水果排行</a></li>
-          <li><a href="#" onClick={() => toolsProductsRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })}>農具排行</a></li>
-
-        </ul>
-      </div>
-
-      <div className="content">
-      <div ref={allProductsRef} >
-        <div className="section">
-          <h2>全部商品</h2>
-          <div className="products">
-            <div className="product">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST9dU5j46de3N3_6TVP1OMQOIZCtnxaON1Dg&s" alt="product" />
-              <div className="product-info">
-                <p>愛文芒果 (6公斤/盒 約10顆) 1箱/免運</p>
-                <span>怡君開心農場</span>
-                <p className="price">NT$890</p>
-              </div>
-            </div>
-            <div className="product">
-              <img src="https://img.ltn.com.tw/Upload/food/page/2016/04/10/160410-1242-00-SXDOn.jpg" alt="product" />
-              <div className="product-info">
-                <p>高山高麗菜 (約8公斤/10顆) </p>
-                <span>芳宜農作</span>
-                <p className="price">NT$600</p>
-              </div>
-            </div>
-            <div className="product">
-              <img src="https://img.ltn.com.tw/Upload/food/page/2018/04/23/180423-7478-0-6UNcA.jpg" alt="product" />
-              <div className="product-info">
-                <p>台農17號金鑽鳳梨5公斤3顆x1箱(產銷履歷_大顆)</p>
-                <span>大熊農場</span>
-                <p className="price">NT$790</p>
-              </div>
-            </div>
-          </div>
-          <a href="#">查看所有商品</a>
-        </div>
-        </div>
-
-        <div className="section">
-        <div ref={vegetableProductsRef} >
-          <h2>蔬菜排行</h2>
-          <div className="products">
-            <div className="product">
-              <img src="https://img.ltn.com.tw/Upload/food/page/2016/04/10/160410-1242-00-SXDOn.jpg" alt="product" />
-              <div className="product-info">
-                <p>高山高麗菜</p>
-                <span>芳宜農作</span>
-                <p className="price">NT$600</p>
-              </div>
-            </div>
-            <div className="product">
-              <img src="https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/9816216/0/638521502659370000?v=1" alt="product" />
-              <div className="product-info">
-                <p>白蘿蔔 2500g</p>
-                <span>鮮友</span>
-                <p className="price">NT$250</p>
-              </div>
-            </div>
-            <div className="product">
-              <img src="https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/8873261/0/638518896529400000?v=1" alt="product" />
-              <div className="product-info">
-                <p>有機蚵仔白菜500g</p>
-                <span>山上農樂</span>
-                <p className="price">NT$90</p>
-              </div>
-            </div>
-          </div>
-          <a href="#">查看所有商品</a>
-        </div>
-        </div>
-
-        <div className="section">
-        <div ref={fruitProductsRef} >
-          <h2>水果排行</h2>
-          <div className="products">
-            <div className="product">
-              <img src="https://shoplineimg.com/5d08366e3f64c1000128316b/61692db02b79a70035c26b08/800x.webp?source_format=jpg" alt="product" />
-              <div className="product-info">
-                <p>社頭冠軍芭樂禮盒[冷藏](珍珠芭樂8斤裝)</p>
-                <span>社頭冠軍芭樂</span>
-                <p className="price">NT$700</p>
-              </div>
-            </div>
-            <div className="product">
-              <img src="https://shoplineimg.com/5d08366e3f64c1000128316b/620240fe2ca2e30029cd4213/800x.webp?source_format=jpg" alt="product" />
-              <div className="product-info">
-                <p>晶彩巨峰葡萄</p>
-                <span>晶彩農作</span>
-                <p className="price">NT$600</p>
-              </div>
-            </div>
-            <div className="product">
-              <img src="https://shoplineimg.com/5d08366e3f64c1000128316b/664ff7a4cc9ea0000da6cf1b/800x.webp?source_format=jpg" alt="product" />
-              <div className="product-info">
-                <p>美國加州空運櫻桃2KG</p>
-                <span>嘉農蔬果</span>
-                <p className="price">NT$2200</p>
-              </div>
-            </div>
-          </div>
-          <a href="#">查看所有商品</a>
-        </div>
-        </div>
-
-        <div className="section">
-        <div ref={toolsProductsRef} >
-          <h2>農具排行</h2>
-          <div className="products">
-            <div className="product">
-              <img src="https://images.pcone.com.tw/uploads/product_image/7278614/33c47320038d34d71b5cfbd837ca2efc/4927e2d987ff4fd332021ea941314ab9.png" alt="product" />
-              <div className="product-info">
-                <p>鏟子 挖土工具</p>
-                <span>激馬力</span>
-                <p className="price">NT$89</p>
-              </div>
-            </div>
-            <div className="product">
-              <img src="https://gw.alicdn.com/imgextra/i1/2691566544/O1CN01pzUinw1yDCiKpDEUg_!!2691566544.jpg_Q75.jpg_.webp" alt="product" />
-              <div className="product-info">
-                <p>平地機整平機四輪拖拉機帶刮板式小型平地機農田整平機土壤整平機</p>
-                <span>馬力牌</span>
-                <p className="price">NT$8532</p>
-              </div>
-            </div>
-            <div className="product">
-              <img src="https://greenorchids.com.tw/wp-content/uploads/2022/06/%E9%9D%9A%E5%9C%9F%E6%92%AD%E7%A8%AE6%E5%85%AC%E5%8D%87_%E7%BB%93%E6%9E%9C-3-scaled.jpg" alt="product" />
-              <div className="product-info">
-                <p>翠筠靚土培養土 添加有機質肥料 -25公升</p>
-                <span>翠筠</span>
-                <p className="price">NT$230</p>
-              </div>
-            </div>
-          </div>
-          <a href="#">查看所有商品</a>
-        </div>
-        </div>
-      </div>
+    <div className="product-sidebar">
+      <h2>商品分類</h2>
+      <ul>
+        {categories.map((category, idx) => (
+          <li key={idx}>
+            <Link to={category.url}>{category.name}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
+
+// 商品列表元件
+const ProductList = ({ data }) => {
+  // 處理產品卡片
+  const renderProduct = (products) =>
+    products.map((product, index) => (
+      <div className="product" key={index}>
+        <div className={`product-rank rank-${index + 1}`}>NO.{index + 1}</div>
+        <img
+          src={product.image}
+          alt={product.name}
+          onError={(e) => (e.target.src = '/images/default-placeholder.png')} // 預設圖片
+        />
+        <div className="product-info">
+          <p className="product-name">{product.name}</p>
+          <span className="product-source">{product.source}</span>
+          <button className="order-button">火速下單</button>
+        </div>
+      </div>
+    ));
+
+  return (
+    <div className="content">
+      {Object.entries(data).map(([key, products]) => (
+        <div key={key} className="section">
+          <h2>{key}</h2>
+          <div className="products">{renderProduct(products)}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// 主商品頁
+const ProductGrid = () => {
+  const data = {
+    "🔥商品熱銷總排行🔥": [
+      {
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST9dU5j46de3N3_6TVP1OMQOIZCtnxaON1Dg&s',
+        name: '愛文芒果 (6公斤/盒 約10顆) 1箱/免運',
+        source: '怡君開心農場',
+        price: 'NT$890',
+      },
+      {
+        image:
+          'https://img.ltn.com.tw/Upload/food/page/2016/04/10/160410-1242-00-SXDOn.jpg',
+        name: '高山高麗菜 (約8公斤/10顆)',
+        source: '芳宜農作',
+        price: 'NT$600',
+      },
+      {
+        image:
+          'https://img.ltn.com.tw/Upload/food/page/2018/04/23/180423-7478-0-6UNcA.jpg',
+        name: '台農17號金鑽鳳梨5公斤3顆x1箱(產銷履歷_大顆)',
+        source: '大熊農場',
+        price: 'NT$790',
+      },
+    ],
+    "蔬菜銷售總排行": [
+      {
+        image: 'https://img.ltn.com.tw/Upload/food/page/2016/04/10/160410-1242-00-SXDOn.jpg',
+        name: '高山高麗菜',
+        source: '芳宜農作',
+        price: 'NT$600',
+      },
+      {
+        image: 'https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/9816216/0/638521502659370000?v=1',
+        name: '美玉白蘿蔔 2500g',
+        source: '鮮友農場',
+        price: 'NT$250',
+      },
+      {
+        image: 'https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/8873261/0/638518896529400000?v=1',
+        name: '有機蚵仔白菜500g',
+        source: '山上農樂',
+        price: 'NT$150',
+      },
+    ],
+    水果銷售總排行: [
+      {
+        image: 'https://shoplineimg.com/5d08366e3f64c1000128316b/61692db02b79a70035c26b08/800x.webp?source_format=jpg',
+        name: '社頭冠軍芭樂禮盒[冷藏](珍珠芭樂8斤裝)',
+        source: '社頭冠軍芭樂',
+        price: 'NT$700',
+      },
+      {
+        image: 'https://shoplineimg.com/5d08366e3f64c1000128316b/620240fe2ca2e30029cd4213/800x.webp?source_format=jpg',
+        name: '晶彩巨峰葡萄',
+        source: '晶彩農作',
+        price: 'NT$600',
+      },
+      {
+        image: 'https://ms-harvest.com/wp-content/uploads/2024/05/DSC08229.webp',
+        name: '迷你西瓜 miniball',
+        source: '嘉農蔬果',
+        price: 'NT$1499',
+      },
+    ],
+  };
+
+  return (
+    <div className="main-container">
+      <CategorySidebar />
+      <ProductList data={data} />
+    </div>
+  );
+};
 
 export default ProductGrid;

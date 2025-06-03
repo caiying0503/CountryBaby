@@ -35,7 +35,7 @@
   margin-left: 10px;
 }
 
-.product-list {
+.famor-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 每排4個 */
   gap: 20px; /* 調整卡片之間的間距 */
@@ -44,7 +44,7 @@
   width: 80%; /* 設置寬度以便居中顯示 */
 }
 
-.product-card {
+.famor-card {
   background: white;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -53,7 +53,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.product-image {
+.famor-image {
   width: 100%;
   border-radius: 8px;
   height: 200px;
@@ -77,11 +77,11 @@
   font-size: 1.0em;
 }
 
-.product-card h2 {
+.famor-card h2 {
   font-size: 1.2em;
   margin: 0.5em 0;
 }
 
-.product-card p {
+.famor-card p {
   margin: 0.5em 0;
 }

@@ -1,21 +1,69 @@
 /* 底部資訊CSS */
-#bottom{
+#bottom {
     width: 100%;
-    background-color: #746248;
+    background-color: #3b2420;
+    padding: 20px 0;
     bottom: 0;
     left: 0;
     text-align: center;
     position: static;
-    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-
-   }
-h4{
     color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 8px;
+}
 
-   }
+#bottom .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
-p{
+#bottom .column {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+    padding: 10px;
+}
+
+#bottom .column h4 {
+    color: #b2c89e;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #f0c05a;
+    display: inline-block;
+}
+
+#bottom .column p, 
+#bottom .column a {
     color: #d5d5d5;
-    font-size: small;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-decoration: none;
+}
 
+#bottom .column a:hover {
+    color: #f0c05a;
+    text-decoration: underline;
+}
+
+#bottom .social-icons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#bottom .social-icons a {
+    color: #ffffff;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+#bottom .social-icons a:hover {
+    color: #f0a500;
 }
