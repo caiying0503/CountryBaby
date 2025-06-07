@@ -203,42 +203,6 @@ a {
   animation: fadeIn 0.2s ease-in-out; /* 添加淡入動畫 */
 }
 
-/* 搜尋欄CSS */
-.search-container {
-  display: flex;
-  align-items: center;
-  padding: 14px 16px;
-}
-
-.search {
-  position: relative;
-  width: 100%;
-}
-
-.search-bar {
-  width: 100%;
-  height: 32px;
-  font-size: 15px;
-  border: 3px solid #b2c89e;
-  background-color: #efefef;
-}
-
-.search-btn {
-  width: 36px;
-  height: 32px;
-  background-color: #b2c89e;
-  color: #efefef;
-  outline: none;
-  border: 2px solid #b2c89e;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.search-btn i {
-  font-size: 16px;
-}
 
 /* logo CSS */
 .logo {
@@ -333,3 +297,14 @@ a {
   background-color: #444;
 }
 
+.logout-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #d32f2f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}

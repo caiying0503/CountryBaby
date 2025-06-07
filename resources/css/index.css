@@ -1,13 +1,105 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* LogIn.css */
+
+* {
+  font-family: "微軟正黑體";
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+/* 整個登入頁面置中 */
+.login_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* 讓它佔滿整個視窗高度，用以垂直置中 */
+}
+
+/* 系統名稱（歡迎回來） */
+.system_name {
+  margin-bottom: 20px;
+}
+.system_name h2 {
+  color: #4a4a4a;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* 白色容器 + 上方綠色條 */
+#container1 {
+  width: 320px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border-top: 10px solid #b2c89e;  /* 上方綠色粗框 */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+              rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 30px 20px; /* 上下左右內距 */
+  text-align: center;
+}
+
+/* 標題 “登入 Login” */
+.login h3 {
+  margin: 0 0 20px 0;
+  color: #b2c89e;
+  font-size: 1.5rem;
+}
+
+/* 輸入框 */
+.login input[type="email"],
+.login input[type="password"] {
+  width: 100%;
+  height: 35px;
+  margin: 8px 0;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #4a4a4a;
+}
+
+/* 登入按鈕 */
+.submit {
+  width: 100%;
+  height: 40px;
+  margin: 20px 0 10px;
+  background-color: #b2c89e;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submit:hover {
+  background-color: #e8b681;
+}
+
+/* 「沒有帳號？註冊」這一行 */
+.login h5 {
+  margin: 10px 0 0 0;
+  font-size: 0.9rem;
+  color: #a3a2a3;
+}
+.login h5 a {
+  margin-left: 5px;
+  color: #b2c89e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.login h5 a:hover {
+  color: #e8b681;
+}
+
+/* 錯誤訊息 */
+.error-msg {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  text-align: left;
 }

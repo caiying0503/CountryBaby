@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import '../css/Header.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from './AuthContext.jsx';
 
 function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+    navigate('/LogIn');
+  };
+
+  useEffect(() => {}, [isLoggedIn]);
 
   return (
     <>
@@ -23,7 +35,7 @@ function Header() {
           </div>
           <li className="dropdown">
             <Link to="/ProductGrid" className="dropdown-toggle">
-              全部商品<i></i>
+              全部商品
             </Link>
             <ul className="dropdown-menu">
               <li><Link to="/ProductVegetables">蔬菜</Link></li>
@@ -34,29 +46,39 @@ function Header() {
           <li><Link to="/Baby">寶貝小物</Link></li>
           <li><Link to="/VideoPage">植栽教學</Link></li>
         </div>
+
         <div className="flex-spacer"></div>
+
         <div className="menu-right">
           <li className="search-container">
-            <div className="search">
-              <input className="search-bar" type="text" placeholder="輸入關鍵字搜尋" />
-              <button className="search-btn" type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
-            </div>
           </li>
           <li className="dropdown user-menu">
             <div>
               <i className="fa-solid fa-user"></i>
             </div>
             <ul className="dropdown-menu">
-              <li><Link to="/LogIn">會員登入</Link></li>
-              <li><Link to="/SignUp">註冊會員</Link></li>
+              {isLoggedIn ? (
+                <>
+                  <li><Link to="/Profile">我的資料</Link></li>
+                  <li><button className="logout-btn" onClick={handleLogout}>登出</button></li>
+                </>
+              ) : (
+                <>
+                  <li><Link to="/LogIn">會員登入</Link></li>
+                  <li><Link to="/SignUp">註冊會員</Link></li>
+                </>
+              )}
             </ul>
           </li>
+
           <li className="cart">
-            <Link to="/shopping" className="cart-icon"><i className="fa-solid fa-cart-shopping"></i></Link>
+            <Link to="/shopping" className="cart-icon">
+              <i className="fa-solid fa-cart-shopping"></i>
+            </Link>
           </li>
         </div>
       </ul>
-      {/* 側邊欄 */}
+
       <div id="mySidebar" className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <a href="#" className="closebtn" onClick={toggleSidebar}>×</a>
         <Link to="/About">About</Link>

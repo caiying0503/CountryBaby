@@ -1,47 +1,112 @@
 /* SignUp.css */
-
-#fullname,
-#comfirm_password,
-#username2,
-#password2,
-.signup h3{
-  width: 200px;
-  height: 35px;
-  margin: 10px;
-  color: #b2c89e;
+/* =========================================== */
+/* 1. 全域設定 */
+* {
+  font-family: "微軟正黑體";
+  box-sizing: border-box;
 }
 
-.login-link {
-  text-decoration: none; /* 去掉下划线 */
-  color: rgb(194, 194, 194); /* 设置为灰色 */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
 }
 
-.login-link:hover {
-  color: #e8b681; /* 设置为浅橙色 */
+/* =========================================== */
+/* 2. 註冊頁面最外層：只做水平置中，並往下推一定距離 */
+.signup_page {
+  display: flex;
+  justify-content: center; /* 水平置中 */
+  margin-top: 200px; /* 根據 navbar 實際高度自行調整 */
+  /* 如果想要在剩下高度內垂直置中，則改用這幾行 (須先移除 margin-top)：
+     min-height: calc(100vh - 80px);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+  */
 }
 
+/* =========================================== */
+/* 3. 白色卡片 + 綠色條 + 陰影 */
 #container2 {
-  margin: 50px;
-  padding: 10px;
-  width: 330px;
-  height: 400px;
-  background-color: white;
+  width: 320px;
+  background-color: #ffffff;
   border-radius: 5px;
-  border-top: 10px solid #b2c89e;
-  
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  
-  /*定位对齐*/
-  position: relative;
-  margin: auto;
-  top: 200px;
+  border-top: 10px solid #b2c89e; /* 上方綠色粗條 */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+              rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 30px 20px; /* 內距 */
   text-align: center;
+  /* 移除 position: relative; top:200px; */
 }
 
-.signup input {
-    padding: 3px;
-    border: none;
-    border: solid 1px #ccc;
-    border-radius: 15px;
-  }
-  
+/* =========================================== */
+/* 4. 標題 “註冊 Sign Up” */
+.signup h3 {
+  margin: 0 0 20px 0;
+  color: #b2c89e;
+  font-size: 1.5rem;
+}
+
+/* =========================================== */
+/* 5. 輸入框 */
+.signup input[type="text"],
+.signup input[type="email"],
+.signup input[type="password"] {
+  width: 100%;
+  height: 35px;
+  margin: 8px 0;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #4a4a4a;
+}
+
+/* =========================================== */
+/* 6. 註冊按鈕 */
+.submit {
+  width: 100%;
+  height: 40px;
+  margin: 20px 0 10px;
+  background-color: #b2c89e;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submit:hover {
+  background-color: #e8b681;
+}
+
+/* =========================================== */
+/* 7. 已有帳號？登入帳號 */
+.signup h5 {
+  margin: 10px 0 0 0;
+  font-size: 0.9rem;
+  color: #a3a2a3;
+}
+
+.signup h5 a {
+  margin-left: 5px;
+  color: #b2c89e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.signup h5 a:hover {
+  color: #e8b681;
+}
+
+/* =========================================== */
+/* 8. 顯示驗證錯誤訊息 */
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  text-align: left;
+  width: 100%;
+}
