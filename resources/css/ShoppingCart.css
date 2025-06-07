@@ -1,0 +1,116 @@
+.shopping-cart-container {
+  max-width: 600px;
+  margin: 90px auto;
+  padding: 20px;
+  background-color: #fefefe;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.shopping-cart-container h2 {
+  border-bottom: 2px solid #a5d6a7;
+  padding-bottom: 8px;
+  color: #2e7d32;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-name {
+  flex: 3;
+  font-size: large;
+}
+
+.cart-item-quantity {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item-quantity button {
+  background-color: #76c579;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  margin: 0 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item-quantity button:disabled {
+  background-color: #c1e3c2;
+  cursor: not-allowed;
+}
+
+.cart-item-quantity button:hover:not(:disabled) {
+  background-color: #388e3c;
+}
+
+.cart-unit-price {
+  color: #9c9c9c; /* 淺灰色 */
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.cart-item-price {
+  flex: 1;
+  text-align: right;
+  font-weight: 600;
+}
+
+.delete-button {
+  flex: 0.5;
+  margin-left: 15px;
+  color: white;
+  background-color: #e53935;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #b71c1c;
+}
+
+.total-price {
+  text-align: right;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 20px;
+  color: #1b5e20;
+}
+
+.checkout-button {
+  margin-top: 25px;
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+  background-color: #388e3c;
+}
