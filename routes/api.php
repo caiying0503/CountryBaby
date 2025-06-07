@@ -11,3 +11,5 @@ Route::get('/products', [ProductController::class, 'index']);
 // 註冊登入
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('auth:api')->get('/profile', [AuthController::class, 'profile']);
+

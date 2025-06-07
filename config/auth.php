@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [ // 新增 JWT 驅動的 api guard
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
     ],
 
     /*

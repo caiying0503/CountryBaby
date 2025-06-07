@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -22,12 +24,16 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // 密碼加密
+            'password' => Hash::make($request->password),
         ]);
+
+        // 註冊後立即產生 JWT token（可選）
+        $token = JWTAuth::fromUser($user);
 
         return response()->json([
             'message' => '註冊成功',
             'user' => $user,
+            'token' => $token,
         ], 201);
     }
 
@@ -39,17 +45,28 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        // 查找使用者
-        $user = User::where('email', $request->email)->first();
+        // 使用 JWTAuth 嘗試驗證帳密，並產生 token
+        $credentials = $request->only('email', 'password');
 
-        // 檢查密碼
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['message' => '帳號或密碼錯誤'], 401);
         }
 
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
         return response()->json([
             'message' => '登入成功',
+            'token' => $token,
             'user' => $user,
         ], 200);
+    }
+
+    public function profile()
+    {
+        /** @var \App\Models\User $user */
+        $user = Auth::guard('api')->user();
+
+        return response()->json($user);
     }
 }
