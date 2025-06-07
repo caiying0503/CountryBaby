@@ -24,6 +24,7 @@ class ShoppingCartController extends Controller
             'quantity' => 'required|integer|min:1',
         ]);
 
+
         $existingItem = ShoppingCartItem::where('user_id', Auth::id())
             ->where('product_id', $request->product_id)
             ->first();

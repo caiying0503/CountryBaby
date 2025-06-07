@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/Products.css';
 
 const ProductCard = ({ product, onBuyClick }) => {
@@ -31,13 +31,60 @@ const ProductList = ({ title, products, onBuyClick }) => {
   );
 };
 
-const ProductModal = ({ product, onClose }) => {
-  const [quantity, setQuantity] = useState(1); // 數量初始值為1
+const ProductModal = ({ product, onClose, userId }) => {
+  const [quantity, setQuantity] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   if (!product) return null;
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1);
   const decreaseQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
+
+  const handleAddToCart = async () => {
+    if (!userId) {
+      alert("請先登入才能加入購物車！");
+      navigate('/login');  // 跳轉登入頁面
+      return;
+    }
+
+    // 在這裡加上這行：
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      alert('找不到授權Token，請重新登入');
+      navigate('/login');
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const res = await fetch("http://127.0.0.1:8000/api/cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          product_id: product.id,
+          quantity: quantity,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("加入購物車失敗");
+      }
+
+      alert("已成功加入購物車！");
+      onClose();
+    } catch (err) {
+      alert(err.message || "發生錯誤，請稍後再試");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="modal fade show d-block" style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
@@ -51,6 +98,7 @@ const ProductModal = ({ product, onClose }) => {
             <p>賣家：{product.seller}</p>
             <p>價格：NT$ {product.price}</p>
             <p>介紹：{product.introduce}</p>
+
             <div className="quantity-container" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <button
                 type="button"
@@ -70,9 +118,16 @@ const ProductModal = ({ product, onClose }) => {
             </div>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" onClick={onClose}>關閉</button>
-            <button type="button" className="btn btn-success">
-              加入購物車（{quantity} 件）
+            <button type="button" className="btn btn-secondary" onClick={onClose}>
+              關閉
+            </button>
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={handleAddToCart}
+              disabled={loading}
+            >
+              {loading ? "加入中..." : `加入購物車（${quantity} 件）`}
             </button>
           </div>
         </div>
@@ -82,22 +137,24 @@ const ProductModal = ({ product, onClose }) => {
 };
 
 const ProductFruits = () => {
-  const [products, setProducts] = useState([]); // 從 API 獲取的商品
-  const [filteredProducts, setFilteredProducts] = useState([]); // 篩選後的商品
-  const [selectedProduct, setSelectedProduct] = useState(null); // 選中的商品
-  const [loading, setLoading] = useState(true); // 資料加載狀態
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]); // 新增用來存水果
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user?.id;
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/products')
       .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        if (!response.ok) throw new Error('Network response was not ok');
         return response.json();
       })
       .then((data) => {
         setProducts(data);
-        // 篩選 id 在 1 到 6 的水果資料
+        // 篩選水果 id 1 ~ 6
         const fruits = data.filter((product) => product.id >= 1 && product.id <= 6);
         setFilteredProducts(fruits);
         setLoading(false);
@@ -108,8 +165,16 @@ const ProductFruits = () => {
       });
   }, []);
 
-  const openModal = (product) => setSelectedProduct(product); // 打開模態框
-  const closeModal = () => setSelectedProduct(null); // 關閉模態框
+  const openModal = (product) => {
+    if (!userId) {
+      alert("請先登入！");
+      navigate('/login');
+      return;
+    }
+    setSelectedProduct(product);
+  };
+
+  const closeModal = () => setSelectedProduct(null);
 
   return (
     <div className="main-container">
@@ -122,14 +187,14 @@ const ProductFruits = () => {
           <li><Link to="/ProductFruits">水果</Link></li>
         </ul>
       </aside>
-      <div className="AllProducts-container" style={{ marginLeft: '220px' }}>
+      <div className="Fruits-Products-container" style={{ marginLeft: '220px' }}>
         {loading ? (
           <p>加載中...</p>
         ) : (
           <ProductList title="水果" products={filteredProducts} onBuyClick={openModal} />
         )}
       </div>
-      <ProductModal product={selectedProduct} onClose={closeModal} />
+      <ProductModal product={selectedProduct} onClose={closeModal} userId={userId} />
     </div>
   );
 };

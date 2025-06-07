@@ -72,7 +72,7 @@ function Header() {
           </li>
 
           <li className="cart">
-            <Link to="/shopping" className="cart-icon">
+            <Link to="/ShoppingCart" className="cart-icon">
               <i className="fa-solid fa-cart-shopping"></i>
             </Link>
           </li>

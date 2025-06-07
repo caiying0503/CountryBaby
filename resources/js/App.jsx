@@ -21,8 +21,9 @@ import ProductVegetables from './ProductVegetables.jsx';
 import VideoPage from './video.jsx';
 import About from './about.jsx';
 import { Carousel, Bottom, Goals } from './FirstPage.jsx';
-
 import { AuthContext } from './AuthContext.jsx';
+import ShoppingCart from './ShoppingCart.jsx';
+
 
 function App() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -45,16 +46,18 @@ function App() {
         <Route path="/ProductGrid" element={<ProductGrid />} />
         <Route path="/Famor" element={<Famor />} />
         <Route path="/Baby" element={<Baby />} />
-              <Route path='/AllProducts' element={<AllProducts />}></Route>
-      <Route path='/ProductVegetables' element={<ProductVegetables/>}></Route>
-      <Route path='/ProductFruits' element={<ProductFruits/>}></Route>
+        <Route path='/AllProducts' element={<AllProducts />}></Route>
+        <Route path='/ProductVegetables' element={<ProductVegetables/>}></Route>
+        <Route path='/ProductFruits' element={<ProductFruits/>}></Route>
         <Route path="/VideoPage" element={<VideoPage />} />
         <Route path="/About" element={<About />} />
+        <Route path="/ShoppingCart" element={<ShoppingCart />} />
 
         {/* 登入／註冊（已登入者強制導回首頁） */}
         <Route path="/LogIn" element={
           isLoggedIn ? <Navigate to="/" replace /> : <LogIn />
         } />
+
         <Route path="/SignUp" element={
           isLoggedIn ? <Navigate to="/" replace /> : <SignUp />
         } />
@@ -66,6 +69,8 @@ function App() {
 
         {/* 其他未知路由 → 導回首頁 */}
         <Route path="*" element={<Navigate to="/" replace />} />
+
+
       </Routes>
     </>
   );
