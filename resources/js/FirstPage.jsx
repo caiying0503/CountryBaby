@@ -79,10 +79,10 @@ export function Bottom() {
         <div className="column">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            {/* <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-facebook"></i>
-            </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            </a> */}
+            <a href="https://www.instagram.com/countrybabyshopping?igsh=ZG5mMTQ0bmhoN2Rp" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-instagram"></i>
             </a>
           </div>

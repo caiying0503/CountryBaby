@@ -81,7 +81,7 @@ const ProductModal = ({ product, onClose }) => {
   );
 };
 
-const ProductPage = () => {
+const ProductFruits = () => {
   const [products, setProducts] = useState([]); // 從 API 獲取的商品
   const [filteredProducts, setFilteredProducts] = useState([]); // 篩選後的商品
   const [selectedProduct, setSelectedProduct] = useState(null); // 選中的商品
@@ -134,4 +134,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default ProductFruits;
